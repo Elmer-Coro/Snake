@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Snake 🐍</title>
+
+    <link
+      rel="stylesheet"
+      href="style.css" />
+  </head>
+  <body>
+    <div
+      class="snake-title-container"
+      id="title">
+      <h1 class="snake-title">Snake</h1>
+      <div>
+        <img
+          src="snake.png"
+          alt="snake" />
+      </div>
+    </div>
+    <div id="board"></div>
+    <div class="boardInfo">
+      <div>
+        Score:
+        <div id="scoreBoard"></div>
+      </div>
+      <button id="start">Start</button>
+    </div>
+
+    <div
+      id="gameOver"
+      class="modal">
+      <h2>Game Over</h2>
+      <p>Mejor suerte la próxima vez.</p>
+      <button onclick="cerrarModal()">Cerrar</button>
+    </div>
+    <div id="gameOver">Game Over</div>
+    <script src="script.js"></script>
+  </body>
+</html>
