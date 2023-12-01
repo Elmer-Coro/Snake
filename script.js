@@ -3,6 +3,7 @@ const scoreBoard = document.getElementById("scoreBoard");
 const startButton = document.getElementById("start");
 const gameOverSign = document.getElementById("gameOver");
 const title = document.getElementById("title");
+const backgroundMusic = document.getElementById("backgroundMusic");
 
 const boardSize = 10;
 const gameSpeed = 200;
@@ -83,6 +84,8 @@ function cerrarModal() {
 
 const gameOver = () => {
   gameOverSign.style.display = "block";
+  backgroundMusic.pause();
+  backgroundMusic.currentTime = 0;
   clearInterval(moveInterval);
   startButton.disabled = false;
 };
@@ -148,6 +151,7 @@ const startGame = () => {
   title.style.display = "none";
   gameOverSign.style.display = "none";
   startButton.disabled = true;
+  backgroundMusic.play();
   drawSnake();
   updateScore();
   createRandomFood();
