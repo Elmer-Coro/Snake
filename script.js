@@ -82,6 +82,10 @@ function cerrarModal() {
   document.body.classList.remove("modal-open");
 }
 
+document
+  .getElementById("gameOverCloseButton")
+  .addEventListener("touchstart", cerrarModal);
+
 const gameOver = () => {
   gameOverSign.style.display = "block";
   backgroundMusic.pause();
@@ -146,6 +150,50 @@ const setGame = () => {
   createBoard();
 };
 
+const touchStart = (event) => {
+  event.preventDefault(); // Agrega esta línea para evitar el desplazamiento predeterminado
+
+  const touch = event.touches[0];
+  const startX = touch.clientX;
+  const startY = touch.clientY;
+
+  document.addEventListener(
+    "touchmove",
+    (moveEvent) => {
+      moveEvent.preventDefault(); // Agrega esta línea para evitar el desplazamiento predeterminado
+
+      const touchMove = moveEvent.touches[0];
+      const deltaX = touchMove.clientX - startX;
+      const deltaY = touchMove.clientY - startY;
+
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        // Movimiento horizontal
+        if (deltaX > 0) {
+          directionEvent({ code: "ArrowRight" });
+        } else {
+          directionEvent({ code: "ArrowLeft" });
+        }
+      } else {
+        // Movimiento vertical
+        if (deltaY > 0) {
+          directionEvent({ code: "ArrowDown" });
+        } else {
+          directionEvent({ code: "ArrowUp" });
+        }
+      }
+    },
+    { passive: false }
+  );
+
+  document.addEventListener(
+    "touchend",
+    () => {
+      document.removeEventListener("touchmove", () => {});
+    },
+    { passive: false }
+  );
+};
+
 const startGame = () => {
   setGame();
   title.style.display = "none";
@@ -156,7 +204,9 @@ const startGame = () => {
   updateScore();
   createRandomFood();
   document.addEventListener("keydown", directionEvent);
+  document.addEventListener("touchstart", touchStart, { passive: false });
   moveInterval = setInterval(() => moveSnake(), gameSpeed);
 };
 
+document.getElementById("start").addEventListener("touchstart", startGame);
 startButton.addEventListener("click", startGame);
