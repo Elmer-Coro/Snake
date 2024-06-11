@@ -196,7 +196,6 @@ const touchStart = (event) => {
 
 const startGame = () => {
   setGame();
-  title.style.display = "none";
   gameOverSign.style.display = "none";
   startButton.disabled = true;
   backgroundMusic.play();
