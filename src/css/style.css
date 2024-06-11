@@ -33,7 +33,7 @@ body{
     aspect-ratio: 1;
     margin-top: 10px;
     max-width: 500px;
-    border-radius: 1rem;
+    border-radius: .5rem;
 }
 .boardInfo {
     max-width: 500px;
@@ -103,15 +103,15 @@ body{
 }
 .emptySquare {
     background-color: black;
-    border-radius: 1rem;
+    border-radius: .5rem;
 }
 .snakeSquare {
     background-color: #00ff00;
-    border-radius: 1rem;
+    border-radius: .5rem;
 }
 .foodSquare {
     background-color: #ff0000;
-    border-radius: 1rem;
+    border-radius: .5rem;
 }
 body.modal-open {
     background-color: rgba(0, 0, 0, 0.5);
